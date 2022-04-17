@@ -276,20 +276,20 @@ getData() {
         DOMAIN=${DOMAIN,,}
         colorEcho ${BLUE}  " 伪装域名(host)：$DOMAIN"
 
-        echo ""
-        if [[ -f ~/xray.pem && -f ~/xray.key ]]; then
-            colorEcho ${BLUE}  " 检测到自有证书，将使用其部署"
-            CERT_FILE="/usr/local/etc/xray/${DOMAIN}.pem"
-            KEY_FILE="/usr/local/etc/xray/${DOMAIN}.key"
-        else
-            resolve=`curl -sL https://hijk.art/hostip.php?d=${DOMAIN}`
-            res=`echo -n ${resolve} | grep ${IP}`
-            if [[ -z "${res}" ]]; then
-                colorEcho ${BLUE}  "${DOMAIN} 解析结果：${resolve}"
-                colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"
-                exit 1
-            fi
-        fi
+ #       echo ""
+ #       if [[ -f ~/xray.pem && -f ~/xray.key ]]; then
+ #          colorEcho ${BLUE}  " 检测到自有证书，将使用其部署"
+ #          CERT_FILE="/usr/local/etc/xray/${DOMAIN}.pem"
+ #          KEY_FILE="/usr/local/etc/xray/${DOMAIN}.key"
+ #      else
+ #          resolve=`curl -sL https://hijk.art/hostip.php?d=${DOMAIN}`
+ #          res=`echo -n ${resolve} | grep ${IP}`
+ #          if [[ -z "${res}" ]]; then
+ #              colorEcho ${BLUE}  "${DOMAIN} 解析结果：${resolve}"
+ #              colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"
+ #              exit 1
+ #          fi
+ #      fi
     fi
 
     echo ""
